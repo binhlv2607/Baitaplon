@@ -11,16 +11,15 @@ import javax.swing.border.LineBorder;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
 
+import java.awt.GridLayout;
 import java.awt.FlowLayout; 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener; 
+
 import javax.swing.JButton; 
 import javax.swing.JLabel; 
-
 import javax.swing.ImageIcon;
-
 import javax.swing.Timer;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -28,9 +27,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 
 
-import java.util.Random;
 
+import java.util.Random;
 import java.awt.Color;
+
 import javax.swing.JToggleButton;
 
 public class PIKaChu extends JFrame {
@@ -100,5 +100,87 @@ public class PIKaChu extends JFrame {
 		
 	}
 	//fsdaggfasfesfsfafsafase
+	public void checkRandom()
+	{
+		//check random
+		
+		for(int i = 0; i < 60;i++)
+		{
+			int r = ran.nextInt(15);
+			A[i] = r;
+			
+		}
+		
+		for(int i = 0; i < 16; i++)
+		{
+				
+			if(DemPT(i) % 2 != 0)
+			{
+				Chuyen(i);
+					
+					
+			}	
+		}
+	}
+	
+	
+	
+	
 
+	public int DemPT(int m)
+	{
+		int d=0;
+		for(int i=0;i<60;i++)
+		{
+			if(m == A[i])
+			{
+				d++;
+			}
+		}
+		return d;	
+	}
+	
+	
+	
+	public void Chuyen(int m)
+	{
+		for(int i = 0; i < 60; i++)
+		{
+			if(A[i] == m)
+			{
+				A[i]++;
+				return;
+			}
+		}
+		
+		
+	}
 }
+
+
+class ImagePanel extends JPanel {
+
+	/**
+		 * 
+		 */
+	private Image img;
+
+	public ImagePanel(String img) {
+	this(new ImageIcon(img).getImage());
+	}
+
+	public ImagePanel(Image img) {
+	this.img = img;
+	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+	setPreferredSize(size);
+	setMinimumSize(size);
+	setMaximumSize(size);
+	setSize(size);
+	setLayout(null);
+	}
+
+	public void paintComponent(Graphics g) {
+	g.drawImage(img, 0, 0, null);
+	}
+
+	}
